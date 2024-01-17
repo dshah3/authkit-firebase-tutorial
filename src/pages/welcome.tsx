@@ -1,6 +1,7 @@
 'use client'
 
-import React from 'react'
+import React, { useEffect, useState, useRef, useCallback } from 'react'
+import Image from 'next/image'
 import { useRouter } from 'next/router'
 
 import { Button } from "@/components/ui/button"
@@ -8,6 +9,7 @@ import {
     Card,
     CardContent,
     CardDescription,
+    CardFooter,
     CardHeader,
     CardTitle,
 } from "@/components/ui/card"

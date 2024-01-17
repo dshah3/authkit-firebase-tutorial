@@ -74,3 +74,16 @@
     @apply bg-background text-foreground;
   }
 }
+
+.container {
+  width: 60%;
+  margin: 0 auto;
+  overflow-y: auto;
+  padding-bottom: 2rem;
+}
+
+.title {
+  font-size: 3rem;
+  text-align: center;
+  margin-top: 1rem;
+}
