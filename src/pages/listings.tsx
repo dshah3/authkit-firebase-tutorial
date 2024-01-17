@@ -75,7 +75,7 @@ const ListingsPage: React.FC = () => {
             method: 'POST'
         });
 
-        router.push('/welcome')
+        router.push('/')
     }
 
     return (

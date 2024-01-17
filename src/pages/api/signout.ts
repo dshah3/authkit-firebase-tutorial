@@ -9,6 +9,6 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
         path: '/'
     })
 
-    res.writeHead(302, { Location: '/welcome' })
+    res.writeHead(302, { Location: '/' })
     res.end()
 }
