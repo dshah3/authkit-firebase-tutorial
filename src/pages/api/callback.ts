@@ -17,7 +17,7 @@ const workos = new WorkOS(process.env.NEXT_WORKOS_API_KEY)
 const clientId = process.env.NEXT_WORKOS_CLIENT_ID
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
-    const code = typeof req.query.code === 'string' ? req.query.code : null
+    const code = typeof req.query.code === 'string' ? req.query.code : null    
 
     if (!code) {
         res.status(400).send("Invalid request: 'code' parameter is missing or invalid")
@@ -36,21 +36,22 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         })
 
         const token = await new SignJWT({ workosUserId: user.id })
-            .setProtectedHeader({ alg: 'HS256', typ: 'JWT' })
-            .setIssuedAt()
-            .setExpirationTime('24h')
-            .sign(secret)
+          .setProtectedHeader({ alg: 'HS256', typ: 'JWT' })
+          .setIssuedAt()
+          .setExpirationTime('24h')
+          .sign(secret);
 
-        console.log("Token generated:", token)
-        console.log("User from WorkOS:", user)
+        console.log("Token generated:", token);
+        console.log("User from WorkOS:", user);
+        
 
         setCookie('token', token, {
-            req,
-            res,
-            path: '/',
-            httpOnly: true,
-            secure: process.env.NODE_ENV === 'development',
-            sameSite: 'lax'
+          req,
+          res,
+          path: '/',
+          httpOnly: true,
+          secure: process.env.NODE_ENV === 'development',
+          sameSite: 'lax'
         })
 
         res.redirect('/listings')
